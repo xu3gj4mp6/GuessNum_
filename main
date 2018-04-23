@@ -1,0 +1,36 @@
+import random
+
+while 1:
+
+	#answer number
+	ans = random.randint( 1, 999 )
+	#answer's range
+	range = [ 1, 999]
+
+	#guess a number
+	guess = input("Guess a number between 1~999: ")
+	while int(guess) != ans:
+	
+		#guess number isn't in the range
+		if int(guess) > range[1] or int(guess) < range[0]:
+			print( guess + " is over the range!")
+			guess = input("\nGuess a number between " + str( range[0] ) + "~" + str( range[1] ) + ":")
+		
+		#guess number is bigger than the answer
+		elif int(guess) > ans:
+			print( guess + " is bigger than the answer!")
+			#reset upperbound
+			range[1] = int(guess)
+			guess = input("\nGuess a number between " + str( range[0] ) + "~" + str( range[1] ) + ":")
+		
+		#guess number is smallerer than the answer
+		else:
+			print( guess + " is smaller than the answer!")
+			#reset lowerbound
+			range[0] = int(guess)
+			guess = input("\nGuess a number between " + str( range[0] ) + "~" + str( range[1] ) + ":")
+		
+	print( "Congratulations! " + guess + " is the answer!\n\n\n")
+	
+	if input("type 'Y' to start a new game; type other word to exit:") != 'Y':
+		break
